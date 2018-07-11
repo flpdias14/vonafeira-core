@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace projetoGCA\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
