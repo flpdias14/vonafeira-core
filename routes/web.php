@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return "<h1>Hello World!</h1>";
+    return view('CadastroUsuario');
 });
+
+Route::post('/adicionar/usuario', 'UserController@adicionar');
