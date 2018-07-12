@@ -15,4 +15,17 @@ Route::get('/', function () {
     return view('CadastroUsuario');
 });
 
-Route::post('/adicionar/usuario', 'UserController@adicionar');
+Route::get('/erroUsuarioExistente', function () {
+    return "<h1> Usuário Existente </h1>";
+});
+
+
+Route::get('/listarUsuarios', 'UserController@listar');
+
+Route::get('/cadastrarUsuario', 'UserController@cadastrar');
+
+Route::get('/editarUsuario/{id}', 'UserController@editar');
+
+Route::post('/adicionarUsuario', 'UserController@adicionar');
+
+Route::post('/salvarUsuario', 'UserController@salvar');
