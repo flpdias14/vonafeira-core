@@ -24,9 +24,7 @@ class UnidadeVendaController extends Controller
         }
 
         return redirect("/erroCadastroExiste");
-        
-
-        
+                
     }
 
     public function listar () {
@@ -41,13 +39,25 @@ class UnidadeVendaController extends Controller
 
     public function atualizar(Request $request){
         $unidadeVenda = \projetoGCA\UnidadeVenda::find($request->id);
-        $unidadeVenda->nome = $request->nome;
-        $unidadeVenda->descricao = $request->descricao;
-        $unidadeVenda->is_fracionado = $request->is_fracionado;
-        $unidadeVenda->is_porcao = $request->is_porcao;
-        $unidadeVenda->update();
+        if($unidadeVenda->nome == $request->nome){
+            $unidadeVenda->nome = $request->nome;
+            $unidadeVenda->descricao = $request->descricao;
+            $unidadeVenda->is_fracionado = $request->is_fracionado;
+            $unidadeVenda->is_porcao = $request->is_porcao;
+            $unidadeVenda->update();
 
-        return redirect("/unidadesVenda");
+            return redirect("/unidadesVenda");
+        }
+        else if($this->verificarExistencia($request->nome) ){
+            $unidadeVenda->nome = $request->nome;
+            $unidadeVenda->descricao = $request->descricao;
+            $unidadeVenda->is_fracionado = $request->is_fracionado;
+            $unidadeVenda->is_porcao = $request->is_porcao;
+            $unidadeVenda->update();
+
+            return redirect("/unidadesVenda");
+        }
+        return redirect("/erroCadastroExiste");
     }
 
     public function verificarExistencia($nome){
