@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return "<h1>Hello World!</h1>";
 });
+Route::get('/unidadesVenda', "UnidadeVendaController@listar");
+Route::get('/adicionarUnidadeVenda', "UnidadeVendaController@adicionar");
+Route::get('/editarUnidadeVenda/{id}', "UnidadeVendaController@editar");
+Route::post('/cadastrarUnidadeVenda', "UnidadeVendaController@cadastrar");
+Route::post('/atualizarUnidadeVenda', "UnidadeVendaController@atualizar");
+
+Route::get('/erroCadastroExiste', function () {
+    return "<h1>Não foi possível realizar o cadastro, já existe um registro com este nome.</h1>";
+});
