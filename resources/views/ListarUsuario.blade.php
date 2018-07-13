@@ -11,7 +11,8 @@
     	
     	<br/>
     @endforeach
- 
- 		<a href="/cadastrarUsuario">Novo</a>
+        <form action="/cadastrarUsuario" method="get">
+            <input type="submit" value="Novo Cadastro" />
+        </form>
     </body>
 </html>
