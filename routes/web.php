@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('CadastroUsuario');
-});
+// Route::get('/', function () {
+//     return view('CadastroUsuario');
+// });
 
 
 Route::get('/erroUsuarioExistente', function () {
@@ -44,4 +44,4 @@ Route::get('/erroCadastroExiste', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
