@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('CadastroUsuario');
-});
+// Route::get('/', function () {
+//     return view('CadastroUsuario');
+// });
 
 
 Route::get('/erroUsuarioExistente', function () {
@@ -41,3 +41,7 @@ Route::get('/erroCadastroExiste', function () {
     return "<h1>Não foi possível realizar o cadastro, já existe um registro com este nome.</h1>";
 });
 
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
