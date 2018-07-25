@@ -4,7 +4,7 @@ namespace projetoGCA;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoUsuario extends Model
+class Contato extends Model
 {
     //
 }
