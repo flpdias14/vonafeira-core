@@ -45,7 +45,7 @@ Route::post('/cadastrarGrupoConsumo', 'GrupoConsumoController@cadastrar');
 Route::get('/editarGrupoConsumo/{id}', 'GrupoConsumoController@editar');
 Route::get('/adicionarGrupoConsumo',  'GrupoConsumoController@adicionar');
 Route::post('/salvarGrupoConsumo',  'GrupoConsumoController@salvar');
-Route::get('/gruposConsumo', 'GrupoConsumoController@listar');
+Route::get('/gruposConsumo/{id}', 'GrupoConsumoController@listar');
 
 Auth::routes();
 

@@ -3,10 +3,12 @@
 namespace projetoGCA\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class GrupoConsumoController extends Controller
 {
+    
     public function adicionar(){
         return view("adicionarGrupoConsumo"); 
     }
@@ -27,8 +29,11 @@ class GrupoConsumoController extends Controller
                         
     }
 
-    public function listar(){
-        $gruposConsumo = \projetoGCA\GrupoConsumo::where('coordenador_id', '=', Auth::user()->id);
-        return view("gruposConsumo", ['gruposConsumo' => $gruposConsumo]);  
+    public function listar($id){
+        if(Auth::check()){
+            $gruposConsumo = \projetoGCA\GrupoConsumo::all();
+            return view("gruposConsumo", ['gruposConsumo' => $gruposConsumo]);  
+        }
+        return view("/home");
     }
 }
