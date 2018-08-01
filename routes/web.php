@@ -41,11 +41,21 @@ Route::get('/erroCadastroExiste', function () {
     return "<h1>Não foi possível realizar o cadastro, já existe um registro com este nome.</h1>";
 });
 
+Route::post('/cadastrarProduto', 'ProdutoController@cadastrar');
+Route::get('/editarProduto/{id}', 'ProdutoController@editar');
+Route::get('/adicionarProduto',  'ProdutoController@adicionar');
+Route::post('/atualizarProduto', "ProdutoController@atualizar");
+Route::get('/produtos', 'ProdutoController@listar');
+
+Route::post('/cadastrarConsumidor', 'ConsumidorController@cadastrar');
+Route::get('/adicionarConsumidor',  'ConsumidorController@adicionar');
+Route::get('/consumidores', 'ConsumidorController@listar');
+
 Route::post('/cadastrarGrupoConsumo', 'GrupoConsumoController@cadastrar');
 Route::get('/editarGrupoConsumo/{id}', 'GrupoConsumoController@editar');
 Route::get('/adicionarGrupoConsumo',  'GrupoConsumoController@adicionar');
-Route::post('/salvarGrupoConsumo',  'GrupoConsumoController@salvar');
-Route::get('/gruposConsumo/{id}', 'GrupoConsumoController@listar');
+Route::post('/atualizarGrupoConsumo', "GrupoConsumoController@atualizar");
+Route::get('/gruposConsumo', 'GrupoConsumoController@listar');
 
 Auth::routes();
 
