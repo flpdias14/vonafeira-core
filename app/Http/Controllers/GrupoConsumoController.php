@@ -41,7 +41,7 @@ class GrupoConsumoController extends Controller
             $grupoConsumo->descricao = $request->descricao;
             $grupoConsumo->periodo = $request->periodo;
             $grupoConsumo->dia_semana = $request->dia_semana;
-            $grupoConsumo->prazo_pedidos = $request->dia_semana;
+            $grupoConsumo->prazo_pedidos = $request->prazo_pedidos;
             $grupoConsumo->update();
 
             return redirect("/gruposConsumo");
@@ -51,7 +51,7 @@ class GrupoConsumoController extends Controller
             $grupoConsumo->descricao = $request->descricao;
             $grupoConsumo->periodo = $request->periodo;
             $grupoConsumo->dia_semana = $request->dia_semana;
-            $grupoConsumo->prazo_pedidos = $request->dia_semana;
+            $grupoConsumo->prazo_pedidos = $request->prazo_pedidos;
             $grupoConsumo->update();
 
             return redirect("/gruposConsumo");

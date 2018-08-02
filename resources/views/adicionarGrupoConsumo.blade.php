@@ -48,7 +48,6 @@
                             <div class="col-md-6">
                             <select id="periodo" class="form-control" name="periodo" required autofocus>
                                     <option value="" selected disabled hidden>Selecionar</option>
- 					                <option value="Diário">Diário</option>
 					                <option value="Semanal">Semanal</option>
                                     <option value="Mensal">Mensal</option>
                                     <option value="Bimestral">Bimestral</option>
