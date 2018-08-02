@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('grupoConsumo') ? ' has-error' : '' }}">
                             <div class="col-md-6">
-                                <input id="grupoConsumo" type="hidden" class="form-control" name="grupoConsumo" value="1">
+                                <input id="grupoConsumo" type="hidden" class="form-control" name="grupoConsumo" value="{{$idGrupoConsumo}}">
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('nomeProdutor') ? ' has-error' : '' }}">

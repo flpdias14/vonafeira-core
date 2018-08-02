@@ -30,9 +30,14 @@
                         <td>{{ $produto->preco }}</td>
                         <td>{{ $produto->unidadevenda_id }}</td>
                         <td>{{ $produto->grupoconsumo_id }}</td>
-                        <td><a href="/editarProduto/{{$produto->id}}">Editar</a></td>
+                        <td><a class="btn btn-success"href="/editarProduto/{{$produto->id}}">Editar</a></td>
+                        <td><a class="btn btn-danger"href="/removerProduto/{{$produto->id}}">Remover</a></td>
                     </tr>
+                    
                     @endforeach
+                    <tfoot>
+		                <a  class="btn btn-primary" href="/adicionarProduto/{{$idGrupoConsumo}}">Novo</a>
+		            </tfoot>
                 </table>
                 </div>
             </div>

@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class ProdutoController extends Controller
 {
     
-    public function adicionar(){
+    public function adicionar($idGrupoConsumo){
         $unidadeVenda = \projetoGCA\UnidadeVenda::all();
-        return view("adicionarProduto", ['unidadesVenda' => $unidadeVenda]); 
+        return view("adicionarProduto", ['unidadesVenda' => $unidadeVenda], ['idGrupoConsumo' => $idGrupoConsumo]); 
     }
 
     public function cadastrar(Request $request){
@@ -24,9 +24,8 @@ class ProdutoController extends Controller
         $produto->descricao = $request->descricao;
         $produto->unidadevenda_id = $request->unidadeVenda;
         $produto->grupoconsumo_id = $request->grupoConsumo;
-        $user = \projetoGCA\User::where('email','=',$request->email)->first();
         $produto->save();
-        return redirect("/produtos");
+        return redirect("/produtos/".$request->grupoConsumo);
                         
     }
 
@@ -35,6 +34,14 @@ class ProdutoController extends Controller
         $unidadeVenda = \projetoGCA\UnidadeVenda::all();   
         return view("editarProduto", ['produto' => $produto], ['unidadesVenda' => $unidadeVenda]);
     } 
+
+    public function remover($id) {
+        $produto = \projetoGCA\Produto::find($id);
+        // return var_dump($produto);
+        $grupoConsumo = $produto->grupoconsumo_id;
+        $produto->delete();  
+        return redirect("/produtos/".$grupoConsumo);
+    }
 
     public function atualizar(Request $request){
         $produto = \projetoGCA\Produto::find($request->id);
@@ -47,7 +54,7 @@ class ProdutoController extends Controller
             $produto->grupoconsumo_id = $request->grupoConsumo;
             $produto->update();
 
-            return redirect("/produtos");
+            return redirect("/produtos/".$request->grupoConsumo);
         }
         else if($this->verificarExistencia($request->nome) ){
             $produto->nome_produtor = $request->nomeProdutor;
@@ -63,10 +70,10 @@ class ProdutoController extends Controller
         return redirect("/erroCadastroExiste");
     }
 
-    public function listar(){
+    public function listar($idGrupoConsumo){
         if(Auth::check()){
-            $produtos = \projetoGCA\Produto::all();
-            return view("produtos", ['produtos' => $produtos]);  
+            $produtos = \projetoGCA\Produto::where('grupoconsumo_id', '=', $idGrupoConsumo)->get();        
+            return view("produtos", ['produtos' => $produtos], ['idGrupoConsumo' => $idGrupoConsumo]);  
         }
         return view("/home");
     }
