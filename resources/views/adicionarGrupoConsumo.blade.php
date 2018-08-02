@@ -80,13 +80,9 @@
                             <div class="col-md-6">
                                 <select id="prazo_pedidos" class="form-control" name="prazo_pedidos" required autofocus>
                                     <option value="" selected disabled hidden>Selecionar</option>
- 					                <option value="Domingo">Domingo</option>
-					                <option value="Segunda">Segunda</option>
-                                    <option value="Terça">Terça</option>
-                                    <option value="Quarta">Quarta</option>
-                                    <option value="Quinta">Quinta</option>
-                                    <option value="Sexta">Sexta</option>
-                                    <option value="Sabado">Sabado</option>
+ 					                <option value="1">1 dia antes</option>
+					                <option value="2">2 dias antes</option>
+                                    <option value="3">3 dias antes</option>
                                 </select>
                                 @if ($errors->has('prazo_pedidos'))
                                     <span class="help-block">

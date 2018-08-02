@@ -19,7 +19,7 @@ class CreateGrupoConsumosTable extends Migration
             $table->string('descricao');
             $table->string('periodo');
             $table->string('dia_semana');
-            $table->string('prazo_pedidos');
+            $table->integer('prazo_pedidos');
             $table->integer('coordenador_id')->unsigned();
             $table->foreign('coordenador_id')->references('id')->on('users');
             $table->timestamps();

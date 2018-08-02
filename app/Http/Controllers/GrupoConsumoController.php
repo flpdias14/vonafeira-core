@@ -21,7 +21,7 @@ class GrupoConsumoController extends Controller
         $grupoConsumo->descricao = $request->descricao;
         $grupoConsumo->periodo = $request->periodo;
         $grupoConsumo->dia_semana = $request->dia_semana;
-        $grupoConsumo->prazo_pedidos = $request->dia_semana;
+        $grupoConsumo->prazo_pedidos = $request->prazo_pedidos;
         $user = \projetoGCA\User::where('email','=',$request->email)->first();
         $grupoConsumo->coordenador_id = $user->id;
         $grupoConsumo->save();
@@ -59,16 +59,12 @@ class GrupoConsumoController extends Controller
         return redirect("/erroCadastroExiste");
     }
 
+
     public function listar(){
         if(Auth::check()){
             $gruposConsumo = \projetoGCA\GrupoConsumo::all();
             return view("gruposConsumo", ['gruposConsumo' => $gruposConsumo]);  
         }
         return view("/home");
-    }
-
-    public function verificarExistencia($nome){
-        $grupoConsumo = \projetoGCA\GrupoConsumo::where ('nome', '=', $nome)->first();
-        return empty($grupoConsumo);
     }
 }
