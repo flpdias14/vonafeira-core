@@ -28,10 +28,8 @@
                         <td>{{ $grupoConsumo->periodo }}</td>
                         <td>{{ $grupoConsumo->dia_semana }}</td>
                         <td>{{ $grupoConsumo->prazo_pedidos }}</td>
-                         <td><a href="/editarUnidadeVenda/{{$grupoConsumo->id}}">Editar</a></td> 
-                        <!-- <td><a disabled href="">Remover</a></td>     -->
+                        <td><a class="btn btn-success" href="/gerenciar/{{$grupoConsumo->id}}">Gerenciar</a></td> 
                     </tr>
-                        <br/>
                     @endforeach
                 </table>
                 </div>

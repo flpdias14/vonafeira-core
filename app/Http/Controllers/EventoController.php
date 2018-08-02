@@ -56,7 +56,7 @@ class EventoController extends Controller
             $evento->data_fim_pedidos = $dataProximoEvento;
             $evento->save();
         }
-        return redirect("/eventos");
+        return redirect("/eventos".$grupoConsumo->id);
 
     }
 
@@ -72,9 +72,9 @@ class EventoController extends Controller
         return redirect("/eventos");
     }
 
-    public function listar(){
+    public function listar($idGrupoConsumo){
         if(Auth::check()){
-            $eventos = \projetoGCA\Evento::all();
+            $eventos = \projetoGCA\Evento::where('grupoconsumo_id', '=', $idGrupoConsumo)->get();
             return view("eventos", ['eventos' => $eventos]);  
         }
         return view("/home");
