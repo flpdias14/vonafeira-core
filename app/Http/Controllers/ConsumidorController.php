@@ -25,9 +25,9 @@ class ConsumidorController extends Controller
                         
     }
 
-    public function listar(){
+    public function listar($idGrupoConsumo){
         if(Auth::check()){
-            $consumidores = \projetoGCA\Consumidor::all();
+            $consumidores = \projetoGCA\Consumidor::where('grupoconsumo_id', '=', $idGrupoConsumo)->get();
             return view("consumidores", ['consumidores' => $consumidores]);  
         }
         return view("/home");

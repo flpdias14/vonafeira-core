@@ -25,8 +25,7 @@ class GrupoConsumoController extends Controller
         $user = \projetoGCA\User::where('email','=',$request->email)->first();
         $grupoConsumo->coordenador_id = $user->id;
         $grupoConsumo->save();
-        return redirect("/gruposConsumo");
-                        
+        return redirect("/gruposConsumo");        
     }
 
     public function editar($id) {
@@ -62,9 +61,14 @@ class GrupoConsumoController extends Controller
 
     public function listar(){
         if(Auth::check()){
-            $gruposConsumo = \projetoGCA\GrupoConsumo::all();
+            $gruposConsumo = \projetoGCA\GrupoConsumo::where('coordenador_id', '=', Auth::user()->id)->get();
             return view("gruposConsumo", ['gruposConsumo' => $gruposConsumo]);  
         }
         return view("/home");
+    }
+
+    public function gerenciar($idGrupoConsumo){
+        $grupoConsumo = \projetoGCA\GrupoConsumo::find($idGrupoConsumo);
+        return view("gerenciarGrupo", ['grupoConsumo' => $grupoConsumo]);
     }
 }
