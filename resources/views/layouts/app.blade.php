@@ -55,7 +55,9 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="/adicionarGrupoConsumo">Novo</a>
-                                        <a href="/editarGrupoConsumo">Editar</a>    
+                                        <a href="/editarGrupoConsumo">Editar</a>
+                                        <a href="/produtos">Produtos</a>
+                                        <a href="/eventos">Eventos</a>    
                                     </li>
                                 </ul>
                             </li>

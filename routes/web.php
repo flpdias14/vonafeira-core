@@ -45,8 +45,13 @@ Route::post('/cadastrarGrupoConsumo', 'GrupoConsumoController@cadastrar');
 Route::get('/editarGrupoConsumo/{id}', 'GrupoConsumoController@editar');
 Route::get('/adicionarGrupoConsumo',  'GrupoConsumoController@adicionar');
 Route::post('/salvarGrupoConsumo',  'GrupoConsumoController@salvar');
-Route::get('/gruposConsumo/{id}', 'GrupoConsumoController@listar');
+Route::get('/gruposConsumo', 'GrupoConsumoController@listar');
 
+Route::post('/cadastrarEvento', 'EventoController@cadastrar');
+Route::get('/editarEvento/{id}', 'EventoController@editar');
+Route::get('/adicionarEvento/{idGrupoConsumo}',  'EventoController@adicionar');
+Route::post('/salvarEvento',  'EventoController@salvar');
+Route::get('/eventos', 'EventoController@listar');
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
