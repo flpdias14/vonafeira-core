@@ -8,43 +8,30 @@
                 <div class="panel-heading">Novo Evento</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="/cadastrarGrupoConsumo">
+                    <form class="form-horizontal" method="POST" action="{{action('EventoController@cadastrar')}}">
                         {{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input type="hidden" class="form-control" name="id_grupo_consumo" value="{{ $grupoConsumo }}">
+                            
+                        
+                        <div class="form-group{{ $errors->has('data_evento') ? ' has-error' : '' }}">
+                            <label for="data_evento" class="col-md-4 control-label">Data do Evento</label>
                             <div class="col-md-6">
-                                <input id="email" type="hidden" class="form-control" name="email" value="{{ Auth::user()->email }}">
-                            </div>
-                        </div>
-                        <div class="form-group{{ $errors->has('dia_evento') ? ' has-error' : '' }}">
-                            <label for="dia_evento" class="col-md-4 control-label">Dia do Evento</label>
-                            <div class="col-md-6">
-                                <input id="dia_evento" type=date class="form-control" name="dia_evento" value="{{ old('dia_evento') }}" required autofocus>
-                                @if ($errors->has('dia_evento'))
+                                <input id="data_evento" type=date class="form-control" name="data_evento" value="{{ old('data_evento') }}" required autofocus>
+                                @if ($errors->has('data_evento'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('dia_evento') }}</strong>
+                                        <strong>{{ $errors->first('data_evento') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('data_inicio_pedidos') ? ' has-error' : '' }}">
-                            <label for="data_inicio_pedidos" class="col-md-4 control-label">Dia de Inicio de Pedidos</label>
+                        <div class="form-group{{ $errors->has('hora_evento') ? ' has-error' : '' }}">
+                            <label for="hora_evento" class="col-md-4 control-label">Horário</label>
                             <div class="col-md-6">
-                                <input id="data_inicio_pedidos" type=date class="form-control" name="data_inicio_pedidos" value="{{ old('dia_evento') }}" required autofocus>
-                                @if ($errors->has('data_inicio_pedidos'))
+                                <input id="hora_evento" type="time" class="form-control" name="hora_evento" value="{{ old('hora_evento') }}" required autofocus>
+                                @if ($errors->has('hora_evento'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('data_inicio_pedidos') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group{{ $errors->has('data_fim_pedidos') ? ' has-error' : '' }}">
-                            <label for="data_fim_pedidos" class="col-md-4 control-label">Dia de fim de Pedidos</label>
-                            <div class="col-md-6">
-                                <input id="data_fim_pedidos" type=date class="form-control" name="data_fim_pedidos" value="{{ old('dia_evento') }}" required autofocus>
-                                @if ($errors->has('data_fim_pedidos'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('data_fim_pedidos') }}</strong>
+                                        <strong>{{ $errors->first('hora_evento') }}</strong>
                                     </span>
                                 @endif
                             </div>

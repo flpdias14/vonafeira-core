@@ -40,17 +40,17 @@ Route::get('/erroCadastroExiste', function () {
 
 // Rotas para Produtos
 Route::post('/cadastrarProduto', 'ProdutoController@cadastrar');
-Route::get('/editarProduto/{id}', 'ProdutoController@editar');
-Route::get('/removerProduto/{id}', 'ProdutoController@remover');
-Route::get('/adicionarProduto/{id}',  'ProdutoController@novo');
-Route::get('/removerProduto/{id}',  'ProdutoController@remover');
+Route::get('/editarProduto/{idGrupoConsumo}', 'ProdutoController@editar');
+Route::get('/removerProduto/{idGrupoConsumo}', 'ProdutoController@remover');
+Route::get('/adicionarProduto/{idGrupoConsumo}',  'ProdutoController@novo');
+Route::get('/removerProduto/{idGrupoConsumo}',  'ProdutoController@remover');
 Route::post('/atualizarProduto', "ProdutoController@atualizar");
-Route::get('/produtos/{id}', 'ProdutoController@listar');
+Route::get('/produtos/{idGrupoConsumo}', 'ProdutoController@listar');
 
 // Rotas para Consumidor
 Route::post('/cadastrarConsumidor', 'ConsumidorController@cadastrar');
 Route::get('/adicionarConsumidor',  'ConsumidorController@adicionar');
-Route::get('/consumidores/{id}', 'ConsumidorController@listar');
+Route::get('/consumidores/{idGrupoConsumo}', 'ConsumidorController@listar');
 
 // Rotas para Grupo de Consumo
 Route::post('/cadastrarGrupoConsumo', 'GrupoConsumoController@cadastrar');
@@ -63,10 +63,10 @@ Route::get('/gruposConsumo', 'GrupoConsumoController@listar');
 
 // Rotas para Eventos
 Route::post('/cadastrarEvento', 'EventoController@cadastrar');
-Route::get('/editarEvento/{id}', 'EventoController@editar');
-Route::get('/adicionarEvento/{idGrupoConsumo}',  'EventoController@adicionar');
+Route::get('/editarEvento/{idGrupoConsumo}', 'EventoController@editar');
+Route::get('/adicionarEvento/{idGrupoConsumo}',  'EventoController@novo');
 Route::post('/salvarEvento',  'EventoController@salvar');
-Route::get('/eventos/{id}', 'EventoController@listar');
+Route::get('/eventos/{idGrupoConsumo}', 'EventoController@listar');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
