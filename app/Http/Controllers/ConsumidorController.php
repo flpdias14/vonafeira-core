@@ -12,7 +12,7 @@ class ConsumidorController extends Controller
     public function adicionar(){
         $user = \projetoGCA\User::all();
         $grupoConsumo = \projetoGCA\GrupoConsumo::all();
-        return view("adicionarConsumidor", ['users' => $user], ['gruposConsumo' => $grupoConsumo]); 
+        return view("consumidor.adicionarConsumidor", ['users' => $user], ['gruposConsumo' => $grupoConsumo]); 
     }
 
     public function cadastrar(Request $request){
@@ -28,7 +28,7 @@ class ConsumidorController extends Controller
     public function listar($idGrupoConsumo){
         if(Auth::check()){
             $consumidores = \projetoGCA\Consumidor::where('grupoconsumo_id', '=', $idGrupoConsumo)->get();
-            return view("consumidores", ['consumidores' => $consumidores]);  
+            return view("consumidor.consumidores", ['consumidores' => $consumidores]);  
         }
         return view("/home");
     }

@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class EventoController extends Controller
 {
+
+    public function novo($idGrupoConsumo){
+        return view('evento.adicionarEvento', [ 'grupoConsumo' => $idGrupoConsumo ]);
+    }
+    /**
+     * @Deprecated
+     */
     public function adicionar($idGrupoConsumo){
         $dataProximoEvento = new DateTime();
         $grupoConsumo = \projetoGCA\GrupoConsumo::find($idGrupoConsumo);
@@ -61,21 +68,43 @@ class EventoController extends Controller
     }
 
     public function cadastrar(Request $request){
+        
+        $dataHoje = new DateTime();
+        $grupoConsumo = \projetoGCA\GrupoConsumo::find($request->id_grupo_consumo);
+
+        $ultimoEvento = \projetoGCA\Evento::where('grupoconsumo_id', '=', $grupoConsumo->id)->orderBy('id', 'DESC')->first();
+        // return var_dump(empty($ultimoEvento));
+        if(!is_null($ultimoEvento)){
+            $dataUltimoEvento = new DateTime($ultimoEvento->data_evento);
+            if($dataHoje < $dataUltimoEvento){
+                return redirect()
+                        ->action('EventoController@listar', $grupoConsumo->id)
+                        ->with('warning', 'Existem eventos ainda não realizados.');
+            }
+        }
         $evento = new \projetoGCA\Evento();
-        $evento->data_inicio_pedidos = $request->data_inicio_pedidos;
-        $evento->data_fim_pedidos = $request->data_fim_pedidos;
+        $evento->coordenador_id = $grupoConsumo->coordenador_id;
+        $evento->grupoconsumo_id = $grupoConsumo->id;
         $evento->data_evento = $request->data_evento;
         $evento->hora_evento = $request->hora_evento;
-        $user = \projetoGCA\User::where('email','=',$request->email)->first();
-        $evento->coordenador_id = $request->grupoconsumo_id;
+
+        
+        $evento->data_inicio_pedidos = $dataHoje->format('Y-m-d');
+        // calcula a data limite dos pedidos de venda
+        $intervalo = new DateInterval("P{$grupoConsumo->prazo_pedidos}D");
+        $dataFimPedidos = new DateTime($evento->data_evento);
+        $dataFimPedidos->sub($intervalo);
+        $evento->data_fim_pedidos = $dataFimPedidos->format('Y-m-d');
         $evento->save();
-        return redirect("/eventos");
+        return redirect()
+                ->action('EventoController@listar', $request->id_grupo_consumo)
+                ->withInput(); 
     }
 
     public function listar($idGrupoConsumo){
         if(Auth::check()){
             $eventos = \projetoGCA\Evento::where('grupoconsumo_id', '=', $idGrupoConsumo)->get();
-            return view("eventos", ['eventos' => $eventos]);  
+            return view("evento.eventos", ['eventos' => $eventos], ['grupoConsumo' => $idGrupoConsumo]);  
         }
         return view("/home");
     }
