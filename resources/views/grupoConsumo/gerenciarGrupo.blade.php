@@ -12,13 +12,19 @@
                 </br>
                 <p>{{$grupoConsumo->descricao}}</p>
                 </br>
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <a href="/editarGrupoConsumo/{{$grupoConsumo->id}}" class="btn btn-primary">Editar Grupo</a> <a href="/produtos/{{$grupoConsumo->id}}" class="btn btn-primary">Produtos</a> <a href="/eventos/{{$grupoConsumo->id}}" class="btn btn-primary">Eventos</a> <a href="/consumidores/{{$grupoConsumo->id}}" class="btn btn-primary">Consumidores</a>
+                <h3>Dia de ocorrência</h3>
+                </br>
+                <p>{{$grupoConsumo->dia_semana}}</p>
+                </br>
+                <h3>Periodicidade</h3>
+                </br>
+                <p>{{$grupoConsumo->periodo}}</p>
+                </br>
+                <h3>Dia limite para pedidos </h3>
+                </br>
+                <p>{{($grupoConsumo->prazo_pedidos == 1 ? $grupoConsumo->prazo_pedidos.' dia antes do evento.': $grupoConsumo->prazo_pedidos.' dias antes do evento.')}}</p>
+                </br>
+                    <a href="{{action('GrupoConsumoController@editar', $grupoConsumo->id)}}" class="btn btn-primary">Editar Grupo</a> <a href="{{action('ProdutoController@listar', $grupoConsumo->id)}}" class="btn btn-primary">Produtos</a> <a href="{{action('EventoController@listar', $grupoConsumo->id)}}" class="btn btn-primary">Eventos</a> <a href="{{action('ConsumidorController@listar', $grupoConsumo->id)}}" class="btn btn-primary">Consumidores</a>
                 </div>
             </div>
         </div>
