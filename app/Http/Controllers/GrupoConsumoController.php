@@ -10,7 +10,7 @@ class GrupoConsumoController extends Controller
 {
     
     public function adicionar(){
-        return view("adicionarGrupoConsumo"); 
+        return view("grupoConsumo.adicionarGrupoConsumo"); 
     }
 
     public function cadastrar(Request $request){
@@ -30,7 +30,7 @@ class GrupoConsumoController extends Controller
 
     public function editar($id) {
         $grupoConsumo = \projetoGCA\GrupoConsumo::find($id);  
-        return view("editarGrupoConsumo", ['grupoConsumo' => $grupoConsumo]);
+        return view("grupoConsumo.editarGrupoConsumo", ['grupoConsumo' => $grupoConsumo]);
     } 
 
     public function atualizar(Request $request){
@@ -62,13 +62,13 @@ class GrupoConsumoController extends Controller
     public function listar(){
         if(Auth::check()){
             $gruposConsumo = \projetoGCA\GrupoConsumo::where('coordenador_id', '=', Auth::user()->id)->get();
-            return view("gruposConsumo", ['gruposConsumo' => $gruposConsumo]);  
+            return view("grupoConsumo.gruposConsumo", ['gruposConsumo' => $gruposConsumo]);  
         }
         return view("/home");
     }
 
     public function gerenciar($idGrupoConsumo){
         $grupoConsumo = \projetoGCA\GrupoConsumo::find($idGrupoConsumo);
-        return view("gerenciarGrupo", ['grupoConsumo' => $grupoConsumo]);
+        return view("grupoConsumo.gerenciarGrupo", ['grupoConsumo' => $grupoConsumo]);
     }
 }

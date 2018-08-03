@@ -75,7 +75,7 @@ class EventoController extends Controller
     public function listar($idGrupoConsumo){
         if(Auth::check()){
             $eventos = \projetoGCA\Evento::where('grupoconsumo_id', '=', $idGrupoConsumo)->get();
-            return view("eventos", ['eventos' => $eventos]);  
+            return view("evento.eventos", ['eventos' => $eventos]);  
         }
         return view("/home");
     }

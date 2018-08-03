@@ -11,7 +11,7 @@ class ProdutoController extends Controller
     
     public function adicionar($idGrupoConsumo){
         $unidadeVenda = \projetoGCA\UnidadeVenda::all();
-        return view("adicionarProduto", ['unidadesVenda' => $unidadeVenda], ['idGrupoConsumo' => $idGrupoConsumo]); 
+        return view("produto.adicionarProduto", ['unidadesVenda' => $unidadeVenda], ['idGrupoConsumo' => $idGrupoConsumo]); 
     }
 
     public function cadastrar(Request $request){
@@ -32,7 +32,7 @@ class ProdutoController extends Controller
     public function editar($id) {
         $produto = \projetoGCA\Produto::find($id); 
         $unidadeVenda = \projetoGCA\UnidadeVenda::all();   
-        return view("editarProduto", ['produto' => $produto], ['unidadesVenda' => $unidadeVenda]);
+        return view("produto.editarProduto", ['produto' => $produto], ['unidadesVenda' => $unidadeVenda]);
     } 
 
     public function remover($id) {
@@ -73,7 +73,7 @@ class ProdutoController extends Controller
     public function listar($idGrupoConsumo){
         if(Auth::check()){
             $produtos = \projetoGCA\Produto::where('grupoconsumo_id', '=', $idGrupoConsumo)->get();        
-            return view("produtos", ['produtos' => $produtos], ['idGrupoConsumo' => $idGrupoConsumo]);  
+            return view("produto.produtos", ['produtos' => $produtos], ['idGrupoConsumo' => $idGrupoConsumo]);  
         }
         return view("/home");
     }
