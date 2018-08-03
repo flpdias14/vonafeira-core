@@ -41,7 +41,8 @@ Route::get('/erroCadastroExiste', function () {
 // Rotas para Produtos
 Route::post('/cadastrarProduto', 'ProdutoController@cadastrar');
 Route::get('/editarProduto/{id}', 'ProdutoController@editar');
-Route::get('/adicionarProduto/{id}',  'ProdutoController@adicionar');
+Route::get('/removerProduto/{id}', 'ProdutoController@remover');
+Route::get('/adicionarProduto/{id}',  'ProdutoController@novo');
 Route::get('/removerProduto/{id}',  'ProdutoController@remover');
 Route::post('/atualizarProduto', "ProdutoController@atualizar");
 Route::get('/produtos/{id}', 'ProdutoController@listar');

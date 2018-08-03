@@ -10,11 +10,6 @@
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="/cadastrarGrupoConsumo">
                         {{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <div class="col-md-6">
-                                <input id="email" type="hidden" class="form-control" name="email" value="{{ Auth::user()->email }}">
-                            </div>
-                        </div>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Nome</label>
 
@@ -49,6 +44,7 @@
                             <select id="periodo" class="form-control" name="periodo" required autofocus>
                                     <option value="" selected disabled hidden>Selecionar</option>
 					                <option value="Semanal">Semanal</option>
+                                    <option value="Quinzenal">Quinzenal</option>
                                     <option value="Mensal">Mensal</option>
                                     <option value="Bimestral">Bimestral</option>
                                 </select>
@@ -64,7 +60,15 @@
                             <label for="dia_semana" class="col-md-4 control-label">Dia do Evento</label>
 
                             <div class="col-md-6">
-                                <input id="dia_semana" type=date class="form-control" name="dia_semana" value="{{ old('dia_semana') }}" required autofocus>
+                                <select id="dia_semana" class="form-control" name="dia_semana" required autofocus>
+                                    <option value="" selected disabled hidden>Selecionar</option>
+ 					                <option value="Domingo">Domingo</option>
+					                <option value="Segunda-feira">Segunda-feira</option>
+                                    <option value="Terça-feira">Terça-feira</option>
+                                    <option value="Quinta-feira">Quinta-feira</option>
+                                    <option value="Sexta-feira">Sexta-feira</option>
+                                    <option value="Sábado">Sábado</option>
+                                </select>                                
                                 @if ($errors->has('periodo'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('periodo') }}</strong>
@@ -82,6 +86,9 @@
  					                <option value="1">1 dia antes</option>
 					                <option value="2">2 dias antes</option>
                                     <option value="3">3 dias antes</option>
+                                    <option value="4">4 dias antes</option>
+                                    <option value="5">5 dias antes</option>
+                                    <option value="6">6 dias antes</option>
                                 </select>
                                 @if ($errors->has('prazo_pedidos'))
                                     <span class="help-block">

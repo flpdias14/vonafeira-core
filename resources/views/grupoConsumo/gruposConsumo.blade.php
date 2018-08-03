@@ -9,7 +9,7 @@
                 @if(old('name'))
                     <div class="alert alert-success">
                         <strong>Sucesso!</strong>
-                        O {{ old('name') }} foi adicionado.
+                        O grupo foi adicionado.
                     </div>
                 @endif
                 <div class="panel-body">

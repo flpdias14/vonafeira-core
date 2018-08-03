@@ -26,7 +26,7 @@ class GrupoConsumoController extends Controller
         // Redireciona para a listagem de grupo de Consumos, passando o nome do grupo que foi cadastrado
         return redirect()
                 ->action('GrupoConsumoController@listar')
-                ->withInput(Request::only(’name’));        
+                ->withInput();        
     }
 
     public function editar($id) {
@@ -44,7 +44,8 @@ class GrupoConsumoController extends Controller
             $grupoConsumo->prazo_pedidos = $request->prazo_pedidos;
             $grupoConsumo->update();
 
-            return redirect("/gruposConsumo");
+            return redirect()
+                    ->action('GrupoConsumoController@listar');
         }
         else if($this->verificarExistencia($request->nome) ){
             $grupoConsumo->name = $request->name;
@@ -54,7 +55,7 @@ class GrupoConsumoController extends Controller
             $grupoConsumo->prazo_pedidos = $request->prazo_pedidos;
             $grupoConsumo->update();
 
-            return redirect("/gruposConsumo");
+            return redirect()->action('GrupoConsumoController@listar');
         }
         return redirect("/erroCadastroExiste");
     }

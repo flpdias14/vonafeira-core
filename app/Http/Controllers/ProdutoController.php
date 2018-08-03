@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class ProdutoController extends Controller
 {
     
-    public function adicionar($idGrupoConsumo){
+    public function novo($idGrupoConsumo){
         $unidadeVenda = \projetoGCA\UnidadeVenda::all();
         return view("produto.adicionarProduto", ['unidadesVenda' => $unidadeVenda], ['idGrupoConsumo' => $idGrupoConsumo]); 
     }
@@ -25,7 +25,9 @@ class ProdutoController extends Controller
         $produto->unidadevenda_id = $request->unidadeVenda;
         $produto->grupoconsumo_id = $request->grupoConsumo;
         $produto->save();
-        return redirect("/produtos/".$request->grupoConsumo);
+        return redirect()
+                ->action('ProdutoController@listar', $request->grupoConsumo)
+                ->withInput(); 
                         
     }
 
@@ -36,13 +38,16 @@ class ProdutoController extends Controller
     } 
 
     public function remover($id) {
-        $produto = \projetoGCA\Produto::find($id);
+        $produto = \projetoGCA\Produto::find($id); 
         // return var_dump($produto);
-        $grupoConsumo = $produto->grupoconsumo_id;
+         $grupoConsumo = $produto->grupoconsumo_id;
+        // return var_dump($produto);
         $produto->delete();  
-        return redirect("/produtos/".$grupoConsumo);
+        return redirect()
+                ->action('ProdutoController@listar', $grupoConsumo)
+                ->withInput();
     }
-
+    
     public function atualizar(Request $request){
         $produto = \projetoGCA\Produto::find($request->id);
         if($produto->nome == $request->nome){
@@ -54,7 +59,9 @@ class ProdutoController extends Controller
             $produto->grupoconsumo_id = $request->grupoConsumo;
             $produto->update();
 
-            return redirect("/produtos/".$request->grupoConsumo);
+            return redirect()
+                    ->action('ProdutoController@listar', $request->grupoConsumo)
+                    ->withInput();
         }
         else if($this->verificarExistencia($request->nome) ){
             $produto->nome_produtor = $request->nomeProdutor;
@@ -65,7 +72,9 @@ class ProdutoController extends Controller
             $produto->grupoconsumo_id = $request->grupoConsumo;
             $produto->update();
 
-            return redirect("/produtos");
+            return redirect()
+                    ->action('ProdutoController@listar', $request->grupoConsumo)
+                    ->withInput();
         }
         return redirect("/erroCadastroExiste");
     }
