@@ -18,19 +18,24 @@ class ConsumidorController extends Controller
     public function cadastrar(Request $request){
              
         $consumidor = new \projetoGCA\Consumidor();
-        $consumidor->consumidor_id = $request->usuario;
-        $consumidor->grupoconsumo_id = $request->grupoConsumo;
+        $consumidor->user_id = Auth::user()->id;
+        $consumidor->grupo_consumo_id = $request->grupoConsumo;
         $consumidor->save();
-        return redirect("/consumidores");
+        return redirect("/home");
                         
     }
 
     public function listar($idGrupoConsumo){
         if(Auth::check()){
-            $consumidores = \projetoGCA\Consumidor::where('grupoconsumo_id', '=', $idGrupoConsumo)->get();
+            $consumidores = \projetoGCA\Consumidor::where('grupo_consumo_id', '=', $idGrupoConsumo)->get();
             return view("consumidor.consumidores", ['consumidores' => $consumidores]);  
         }
         return view("/home");
+    }
+
+    public function selecionarGrupo(){
+        $gruposConsumo = \projetoGCA\GrupoConsumo::all();
+        return view('consumidor.selecionarGrupo',  ['gruposConsumo' => $gruposConsumo]);
     }
 
 }

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Consumidor extends Model
 {
     public function usuario(){
-
         $this->hasOne('projetoGCA\User');
     }
 
