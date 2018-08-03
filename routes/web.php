@@ -54,7 +54,7 @@ Route::get('/consumidores/{id}', 'ConsumidorController@listar');
 // Rotas para Grupo de Consumo
 Route::post('/cadastrarGrupoConsumo', 'GrupoConsumoController@cadastrar');
 Route::get('/editarGrupoConsumo/{id}', 'GrupoConsumoController@editar');
-Route::get('/adicionarGrupoConsumo',  'GrupoConsumoController@adicionar');
+Route::get('/adicionarGrupoConsumo',  'GrupoConsumoController@novo');
 Route::get('/gerenciar/{id}', 'GrupoConsumoController@gerenciar');
 Route::post('/atualizarGrupoConsumo', "GrupoConsumoController@atualizar");
 Route::post('/salvarGrupoConsumo',  'GrupoConsumoController@salvar');

@@ -9,13 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class GrupoConsumoController extends Controller
 {
     
-    public function adicionar(){
+    public function novo(){
         return view("grupoConsumo.adicionarGrupoConsumo"); 
     }
 
     public function cadastrar(Request $request){
-        
-        
         $grupoConsumo = new \projetoGCA\GrupoConsumo();
         $grupoConsumo->name = $request->name;
         $grupoConsumo->descricao = $request->descricao;
@@ -25,7 +23,10 @@ class GrupoConsumoController extends Controller
         $user = \projetoGCA\User::where('email','=',$request->email)->first();
         $grupoConsumo->coordenador_id = $user->id;
         $grupoConsumo->save();
-        return redirect("/gruposConsumo");        
+        // Redireciona para a listagem de grupo de Consumos, passando o nome do grupo que foi cadastrado
+        return redirect()
+                ->action('GrupoConsumoController@listar')
+                ->withInput(Request::only(’name’));        
     }
 
     public function editar($id) {

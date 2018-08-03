@@ -6,7 +6,12 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Grupos de Consumo</div>
-
+                @if(old('name'))
+                    <div class="alert alert-success">
+                        <strong>Sucesso!</strong>
+                        O {{ old('name') }} foi adicionado.
+                    </div>
+                @endif
                 <div class="panel-body">
                     @if(count($gruposConsumo) == 0)
                     <div class="alert alert-danger">
@@ -20,7 +25,7 @@
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Período</th>
-                                <th>Primeiro Evento</th>
+                                <th>Dia da Semana</th>
                                 <th>Dia limite para pedidos</th>
                                 <th colspan="2">Ação</th>
                             </tr>
@@ -33,14 +38,14 @@
                                 <td>{{ $grupoConsumo->periodo }}</td>
                                 <td>{{ $grupoConsumo->dia_semana }}</td>
                                 <td>{{ $grupoConsumo->prazo_pedidos }}</td>
-                                <td><a class="btn btn-success" href="/gerenciar/{{$grupoConsumo->id}}">Gerenciar</a></td> 
+                                <td><a class="btn btn-success" href="{{action('GrupoConsumoController@gerenciar', $grupoConsumo->id)}}">Gerenciar</a></td> 
                             </tr>   
                             @endforeach
                         </table>    
                     @endif
                 </div>
                 <div class="panel-footer">
-                    <a class="btn btn-success" href="/adicionarGrupoConsumo">Novo</a>
+                    <a class="btn btn-success" href="{{action('GrupoConsumoController@novo')}}">Novo</a>
                 </div>
             </div>
         </div>
