@@ -8,7 +8,7 @@ class UnidadeVendaController extends Controller
 {
     public function adicionar(){
         // chama view de adição de unidade de venda
-        return view("adicionarUnidadeVenda"); 
+        return view("unidadeVenda.adicionarUnidadeVenda"); 
     }
 
     public function cadastrar(Request $request){
@@ -29,12 +29,12 @@ class UnidadeVendaController extends Controller
 
     public function listar () {
         $unidadesVenda = \projetoGCA\UnidadeVenda::all();
-        return view("unidadesVenda", ['listaUnidades' => $unidadesVenda]);    	
+        return view("unidadeVenda.unidadesVenda", ['listaUnidades' => $unidadesVenda]);    	
     }
 
     public function editar($id) {
         $unidadeVenda = \projetoGCA\UnidadeVenda::find($id);   
-        return view("editarUnidadeVenda", ['unidadeVenda' => $unidadeVenda]);
+        return view("unidadeVenda.editarUnidadeVenda", ['unidadeVenda' => $unidadeVenda]);
     } 
 
     public function atualizar(Request $request){
