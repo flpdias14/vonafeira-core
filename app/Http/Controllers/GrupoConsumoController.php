@@ -20,8 +20,8 @@ class GrupoConsumoController extends Controller
         $grupoConsumo->periodo = $request->periodo;
         $grupoConsumo->dia_semana = $request->dia_semana;
         $grupoConsumo->prazo_pedidos = $request->prazo_pedidos;
-        $user = \projetoGCA\User::where('email','=',$request->email)->first();
-        $grupoConsumo->coordenador_id = $user->id;
+        //$user = \projetoGCA\User::where('email','=',$request->email)->first();
+        $grupoConsumo->coordenador_id = Auth::user()->id;
         $grupoConsumo->save();
         // Redireciona para a listagem de grupo de Consumos, passando o nome do grupo que foi cadastrado
         return redirect()
