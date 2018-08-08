@@ -72,6 +72,12 @@ Route::post('/salvarEvento',  'EventoController@salvar');
 Route::get('/eventos/{idGrupoConsumo}', 'EventoController@listar');
 Auth::routes();
 
+// Rotas para Loja
+Route::get('/loja', 'ProdutoController@loja');
+
+// Rotas para Carrinho
+Route::post('/carrinho', 'PedidoController@create');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function(){
     return redirect()->action('HomeController@index');

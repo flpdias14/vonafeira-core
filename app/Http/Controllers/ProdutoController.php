@@ -87,6 +87,22 @@ class ProdutoController extends Controller
         return view("/home");
     }
 
+    public function loja(){
+        if(Auth::check()){
+            $produtos = \projetoGCA\Produto::all();        
+            return view("loja.loja", ['produtos' => $produtos]);  
+        }
+        return view("/home");
+    }
+
+    public function carrinho(){
+        if(Auth::check()){
+            $produtos = \projetoGCA\Produto::all();        
+            return view("loja.loja", ['produtos' => $produtos]);  
+        }
+        return view("/home");
+    }
+
     public function verificarExistencia($nome){
         $produto = \projetoGCA\Produto::where ('nome', '=', $nome)->first();
         return empty($produto);
