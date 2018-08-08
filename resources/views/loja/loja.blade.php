@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Produtos</div>
-                <form class="form-horizontal" method="POST" action="{{action('PedidoController@create')}}">     
+                <form class="form-horizontal" method="POST" action="{{action('PedidoController@confirmar')}}">     
                     <div class="panel-body">
                         @if(count($produtos) == 0)
                         <div class="alert alert-danger">

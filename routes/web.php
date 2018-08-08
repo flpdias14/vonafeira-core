@@ -76,7 +76,7 @@ Auth::routes();
 Route::get('/loja', 'ProdutoController@loja');
 
 // Rotas para Carrinho
-Route::post('/carrinho', 'PedidoController@create');
+Route::post('/carrinho', 'PedidoController@confirmar');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function(){

@@ -3,7 +3,9 @@
 namespace projetoGCA;
 
 use Illuminate\Database\Eloquent\Model;
-
+use \projetoGCA\User;
+use \projetoGCA\GrupoConsumo;
+use \projetoGCA\Pedido;
 class Consumidor extends Model
 {
     protected $table = 'consumidors';
@@ -13,5 +15,9 @@ class Consumidor extends Model
 
     public function grupoConsumo(){
         return $this->belongsTo(GrupoConsumo::class, "grupo_consumo_id");
+    }
+
+    public function pedidos(){
+        return $this->hasMany(Pedido::class, "id", "consumidor_id");
     }
 }
