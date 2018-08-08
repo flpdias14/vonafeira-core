@@ -17,8 +17,8 @@ class CreateUnidadeVendasTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('descricao');
-            $table->boolean('is_fracionado');
-            $table->boolean('is_porcao');
+            $table->boolean('is_fracionado')->default(false);;
+            $table->boolean('is_porcao')->default(false);;
             $table->timestamps();
         });
     }
