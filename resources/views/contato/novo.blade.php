@@ -36,7 +36,7 @@ window.onload = function(){
                     <form class="form-horizontal" method="POST" action="{{action('ContatoController@cadastrar')}}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('telefone') ? ' has-error' : '' }}">
-                            <label for="telefone" class="col-md-4 control-label">Nome do Produtor</label>
+                            <label for="telefone" class="col-md-4 control-label">Telefone</label>
 
                             <div class="col-md-6">
                                 <input  id="tel" type="text" class="form-control" name="telefone" maxlength="15" value="{{ old('telefone') }}" required autofocus >
