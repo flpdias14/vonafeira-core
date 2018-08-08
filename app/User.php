@@ -30,4 +30,8 @@ class User extends Authenticatable
     public function contato(){
         return $this->hasOne('projetoGCA\Contato');
     }
+
+    public function consumidor(){
+        return $this->hasOne(Consumidor::class, 'user_id');
+    }
 }
