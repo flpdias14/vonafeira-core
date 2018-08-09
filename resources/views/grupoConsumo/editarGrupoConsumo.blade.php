@@ -73,6 +73,7 @@
  					                <option value="Domingo">Domingo</option>
 					                <option value="Segunda-feira">Segunda-feira</option>
                                     <option value="Terça-feira">Terça-feira</option>
+                                    <option value="Quarta-feira">Quarta-feira</option>
                                     <option value="Quinta-feira">Quinta-feira</option>
                                     <option value="Sexta-feira">Sexta-feira</option>
                                     <option value="Sábado">Sábado</option>

@@ -25,7 +25,6 @@ class EventoController extends Controller
         $evento->data_inicio_pedidos = $dataAtual->format('Y-m-d');
         $evento->hora_evento = "08:00";
         $ultimoEvento = \projetoGCA\Evento::where('grupoconsumo_id', '=', $grupoConsumo->id)->orderBy('id', 'DESC')->first();
-        // return var_dump(empty($ultimoEvento));
         if(!is_null($ultimoEvento)){
             $dataUltimoEvento = new DateTime($ultimoEvento->data_evento);
             if($dataAtual < $dataUltimoEvento){
@@ -81,6 +80,11 @@ class EventoController extends Controller
                         ->action('EventoController@listar', $grupoConsumo->id)
                         ->with('warning', 'Existem eventos ainda não realizados.');
             }
+            if($dataAtual > new DateTime($evento->data_evento)){
+                return redirect()
+                        ->action('EventoController@listar', $grupoConsumo->id)
+                        ->with('warning', 'A data do evento não pode ser anterior a data atual.');
+            }
         }
         $evento = new \projetoGCA\Evento();
         $evento->coordenador_id = $grupoConsumo->coordenador_id;
@@ -107,5 +111,9 @@ class EventoController extends Controller
             return view("evento.eventos", ['eventos' => $eventos], ['grupoConsumo' => $idGrupoConsumo]);  
         }
         return view("/home");
+    }
+
+    public function pedidos($evento_id){
+        return var_dump($evento_id);
     }
 }

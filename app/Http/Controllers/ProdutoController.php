@@ -5,6 +5,8 @@ namespace projetoGCA\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProdutoController extends Controller
 {
@@ -15,7 +17,16 @@ class ProdutoController extends Controller
     }
 
     public function cadastrar(Request $request){
+        $validator = Validator::make($request->all(), [
+            'nomeProdutor' => 'required|min:4|max:191',
+            'nome' => 'required|min:4|max:191',
+            'descricao' => 'max:191',
+            'preco' => 'required|numeric',
+        ]);
         
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator->errors());
+        }
         
         $produto = new \projetoGCA\Produto();
         $produto->nome_produtor = $request->nomeProdutor;

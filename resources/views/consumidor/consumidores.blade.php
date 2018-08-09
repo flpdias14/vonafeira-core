@@ -18,12 +18,13 @@
                             <th>Cod</th>
                             <th>Usuário</th>
                             <th>Grupo de Consumo</th>
+                            <th>Ações</th>
                         </tr>
                         @foreach ($consumidores as $consumidor)
                         <tr>
                             <td>{{ $consumidor->id }}</td>
-                            <td>{{ $consumidor->user_id }}</td>
-                            <td>{{ $consumidor->grupo_consumo_id}}</td> 
+                            <td>{{ $consumidor->usuario->name }}</td>
+                            <td>{{ $consumidor->grupoConsumo->name}}</td> 
                         </tr>
                         @endforeach
                     </table>

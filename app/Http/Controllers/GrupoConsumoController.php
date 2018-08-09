@@ -2,6 +2,7 @@
 
 namespace projetoGCA\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -14,13 +15,22 @@ class GrupoConsumoController extends Controller
     }
 
     public function cadastrar(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:grupo_consumos|min:8|max:191',
+            'descricao' => 'min:8|max:191'
+        ]);
+        
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator->errors());
+        }
+
         $grupoConsumo = new \projetoGCA\GrupoConsumo();
         $grupoConsumo->name = $request->name;
         $grupoConsumo->descricao = $request->descricao;
         $grupoConsumo->periodo = $request->periodo;
         $grupoConsumo->dia_semana = $request->dia_semana;
         $grupoConsumo->prazo_pedidos = $request->prazo_pedidos;
-        $user = \projetoGCA\User::where('email','=',$request->email)->first();
         $grupoConsumo->coordenador_id = Auth::user()->id;
         $grupoConsumo->save();
         // Redireciona para a listagem de grupo de Consumos, passando o nome do grupo que foi cadastrado
@@ -35,6 +45,7 @@ class GrupoConsumoController extends Controller
     } 
 
     public function atualizar(Request $request){
+        
         $grupoConsumo = \projetoGCA\GrupoConsumo::find($request->id);
         if($grupoConsumo->nome == $request->nome){
             $grupoConsumo->name = $request->name;

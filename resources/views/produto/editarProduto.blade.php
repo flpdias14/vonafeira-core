@@ -80,7 +80,11 @@
                                 <select name="unidadeVenda" required autofocus>
                                     <option value="" selected disabled hidden>Escolha uma unidade</option>
                                     @foreach ($unidadesVenda as $unidadeVenda)
-                                        <option value={{$unidadeVenda->id}}>{{$unidadeVenda->nome}}</option>
+                                        @if($produto->unidadeVenda->id == $unidadeVenda->id)
+                                            <option value={{$unidadeVenda->id}} selected>{{$unidadeVenda->nome}}</option>
+                                        @else
+                                            <option value={{$unidadeVenda->id}} selected>{{$unidadeVenda->nome}}</option>   
+                                        @endif
                                     @endforeach
                                 </select>
 

@@ -26,7 +26,7 @@
                                 <th>Descrição</th>
                                 <th>Período</th>
                                 <th>Dia da Semana</th>
-                                <th>Dia limite para pedidos</th>
+                                <th>Limite para pedidos</th>
                                 <th colspan="2">Ação</th>
                             </tr>
                             
@@ -37,7 +37,7 @@
                                 <td>{{ $grupoConsumo->descricao }}</td>
                                 <td>{{ $grupoConsumo->periodo }}</td>
                                 <td>{{ $grupoConsumo->dia_semana }}</td>
-                                <td>{{ $grupoConsumo->prazo_pedidos }}</td>
+                                <td>{{ $grupoConsumo->prazo_pedidos }} dias antes do evento</td>
                                 <td><a class="btn btn-success" href="{{action('GrupoConsumoController@gerenciar', $grupoConsumo->id)}}">Gerenciar</a></td> 
                             </tr>   
                             @endforeach
