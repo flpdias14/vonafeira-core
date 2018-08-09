@@ -112,4 +112,8 @@ class EventoController extends Controller
         }
         return view("/home");
     }
+
+    public function pedidos($evento_id){
+        return var_dump($evento_id);
+    }
 }

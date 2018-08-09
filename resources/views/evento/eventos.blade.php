@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Eventos</div>
+                <div class="panel-heading"><h1>Eventos</h1></div>
                     @if(old('data_evento'))
                         <div class="alert alert-success">
                             <strong>Sucesso!</strong>
@@ -32,6 +32,7 @@
                             <th>Hora Evento</th>
                             <th>Data Inicio Pedidos</th>
                             <th>Data Fim Pedidos</th>
+                            <th>Pedidos</th>
                             
                         </tr>
                         
@@ -42,6 +43,7 @@
                             <td>{{ $evento->hora_evento }}</td>
                             <td>{{ $evento->data_inicio_pedidos }}</td>
                             <td>{{ $evento->data_fim_pedidos }}</td>
+                            <td><a class="btn btn-info" href="{{action('EventoController@pedidos', $evento->id)}}">Visualizar</a></td>
                         </tr>
                         @endforeach
                         </tbody>
