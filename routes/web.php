@@ -54,6 +54,7 @@ Route::post('/cadastrarConsumidor', 'ConsumidorController@cadastrar');
 Route::get('/adicionarConsumidor',  'ConsumidorController@adicionar');
 Route::get('/consumidores/{idGrupoConsumo}', 'ConsumidorController@listar');
 Route::get('/selecionarGrupo', 'ConsumidorController@selecionarGrupo');
+Route::get('/meusPedidos', 'ConsumidorController@pedidos');
 
 // Rotas para Grupo de Consumo
 Route::post('/cadastrarGrupoConsumo', 'GrupoConsumoController@cadastrar');
@@ -73,10 +74,11 @@ Route::get('/eventos/{idGrupoConsumo}', 'EventoController@listar');
 Auth::routes();
 
 // Rotas para Loja
-Route::get('/loja', 'ProdutoController@loja');
+Route::get('/loja', 'PedidoController@loja');
 
 // Rotas para Carrinho
 Route::post('/carrinho', 'PedidoController@confirmar');
+Route::post('/pedidoFinalizado', 'PedidoController@finalizar');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function(){

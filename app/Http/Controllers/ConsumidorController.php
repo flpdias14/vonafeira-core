@@ -3,21 +3,23 @@
 namespace projetoGCA\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+
 use Illuminate\Support\Facades\Auth;
 use \projetoGCA\Consumidor;
+use \projetoGCA\User;
 use \projetoGCA\GrupoConsumo;
 class ConsumidorController extends Controller
 {
-    
+    /**
+     * @Deprecated
+     */
     public function adicionar(){
-        $user = \projetoGCA\User::all();
-        $grupoConsumo = \projetoGCA\GrupoConsumo::all();
+        $user = User::all();
+        $grupoConsumo = GrupoConsumo::all();
         return view("consumidor.adicionarConsumidor", ['users' => $user], ['gruposConsumo' => $grupoConsumo]); 
     }
 
     public function cadastrar(Request $request){
-             
         $consumidor = new Consumidor();
         $consumidor->user_id = Auth::user()->id;
         $consumidor->grupo_consumo_id = $request->grupoConsumo;
@@ -38,6 +40,11 @@ class ConsumidorController extends Controller
     public function selecionarGrupo(){
         $gruposConsumo = GrupoConsumo::all();
         return view('consumidor.selecionarGrupo',  ['gruposConsumo' => $gruposConsumo]);
+    }
+
+    public function pedidos(){
+        $pedidos = Auth::user()->consumidor->pedidos;
+        return view('consumidor.meuspedidos', ['pedidos'=>$pedidos]);   
     }
 
 }

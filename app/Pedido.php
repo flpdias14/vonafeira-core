@@ -10,7 +10,7 @@ use \projetoGCA\Evento;
 class Pedido extends Model
 {
     public function itens(){
-        return $this->hasMany(ItemPedido::class, "id", "pedido_id");
+        return $this->hasMany(ItemPedido::class, "pedido_id", "id");
     }
 
     public function consumidor(){
