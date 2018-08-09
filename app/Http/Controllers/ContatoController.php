@@ -1,8 +1,6 @@
 <?php
 
 namespace projetoGCA\Http\Controllers;
-use Illuminate\Support\Facades\Validator;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
