@@ -1,6 +1,7 @@
 <?php
 
 namespace projetoGCA\Http\Controllers;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ class ContatoController extends Controller
     }
 
     public function cadastrar(Request $request){
+        
         $contato = new Contato();
         $user_id = Auth::user()->id;
         $contato->telefone = $request->telefone;

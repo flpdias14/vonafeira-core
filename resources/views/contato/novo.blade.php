@@ -1,30 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script type="text/javascript">
-/* Máscaras ER */
-function mascara(o,f){
-    v_obj=o
-    v_fun=f
-    setTimeout("execmascara()",1)
-}
-function execmascara(){
-    v_obj.value=v_fun(v_obj.value)
-}
-function mtel(v){
-    v=v.replace(/D/g,"");             //Remove tudo o que não é dígito
-    v=v.replace(/^(d{2})(d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-    v=v.replace(/(d)(d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
-    return v;
-}
-function id( el ){
-	return document.getElementById( el );
-}
-window.onload = function(){
-	id('tel').onkeypress = function(){
-		mascara( this, mtel );
-	}
-}
 </script>
 <div class="container">
     <div class="row">
@@ -39,7 +15,7 @@ window.onload = function(){
                             <label for="telefone" class="col-md-4 control-label">Telefone</label>
 
                             <div class="col-md-6">
-                                <input  id="tel" type="text" class="form-control" name="telefone" maxlength="15" value="{{ old('telefone') }}" required autofocus >
+                                <input  type="text" name="telefone" id="telefone" pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" placeholder="(87) 91111-1111" class="form-control"  maxlength="15" value="{{ old('telefone') }}" required autofocus >
 
                                 @if ($errors->has('telefone'))
                                     <span class="help-block">
