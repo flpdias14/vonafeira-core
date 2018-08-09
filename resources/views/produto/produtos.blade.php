@@ -37,8 +37,8 @@
                             <td>{{ $produto->descricao }}</td>
                             <td>{{ $produto->preco }}</td>
                             <td>{{ $produto->unidadeVenda->nome }}</td>  
-                            <td><a class="btn btn-success"href="{{action('ProdutoController@editar', $produto->id)}}">Editar</a></td>
-                            <td><a class="btn btn-danger"href="{{action('ProdutoController@remover',$produto->id)}}">Remover</a></td>
+                            <td><a class="btn btn-success"href="{{ action('ProdutoController@editar', $produto->id) }}">Editar</a></td>
+                            <td><a class="btn btn-danger"href="{{ action('ProdutoController@remover',$produto->id) }}">Remover</a></td>
                         </tr>
                         @endforeach
                     </table>
