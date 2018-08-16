@@ -127,7 +127,7 @@ class EventoController extends Controller
             array_push($totaisPedidos, $total);
 
         }       
-        return view("pedido.pedidos", ['pedidos' => $pedidos, 'totaisItens' => $totaisItens, 'totaisPedidos' => $totaisPedidos]);  
+        return view("pedido.pedidos", ['pedidos' => $pedidos, 'totaisItens' => $totaisItens, 'totaisPedidos' => $totaisPedidos, 'evento_id'=>$evento_id]);  
     }
 
     public function itensPedido($pedido_id){

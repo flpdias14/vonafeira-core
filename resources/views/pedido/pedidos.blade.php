@@ -27,8 +27,8 @@
                             <td>{{ $pedidos[$i]->id }}</td>
                             <td>{{ $pedidos[$i]->consumidor->usuario->name }}</td>
                             <td>{{ $totaisItens[$i] }}</td>
-                            <td>{{ $totaisPedidos[$i] }}</td>
-                            <td>{{ $pedidos[$i]->data_pedido }}</td>
+                            <td>{{ 'R$'.number_format($totaisPedidos[$i], 2) }}</td>
+                            <td>{{ \projetoGCA\Http\Controllers\UtilsController::dataFormato($pedidos[$i]->data_pedido, 'd/m/Y') }}</td>
                             <td><a class="btn btn-info" href="{{action('EventoController@itensPedido', $pedidos[$i]->id)}}">Itens</a></td>
                         </tr>
                         @endfor
@@ -37,6 +37,8 @@
                 </div>
                 <div class="panel-footer">
                     <a class="btn btn-danger" href="{{URL::previous()}}">Voltar</a>
+                    <a class="btn btn-primary" href="{{action('PdfController@criarRelatorioComposicaoPedidos', $evento_id)}}">Relatório Montagem Pedido</a>
+                    <a class="btn btn-warning" href="{{action('PdfController@criarRelatorioPedidosProdutores', $evento_id)}}">Relatório Produtor</a>
                 </div>
             </div>
         </div>
