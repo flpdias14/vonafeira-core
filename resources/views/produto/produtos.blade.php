@@ -45,6 +45,7 @@
                 @endif
                 </div>
                 <div class="panel-footer">
+                    <a class="btn btn-danger" href="{{URL::previous()}}">Voltar</a>
                     <a class="btn btn-success" href="{{action('ProdutoController@novo', $idGrupoConsumo)}}">Novo</a>
                 </div>
             </div>

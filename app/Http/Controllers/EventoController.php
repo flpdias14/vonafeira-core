@@ -114,6 +114,25 @@ class EventoController extends Controller
     }
 
     public function pedidos($evento_id){
-        return var_dump($evento_id);
+        $pedidos = \projetoGCA\Pedido::where('evento_id','=',$evento_id)->get();
+        $totaisItens = array();
+        $totaisPedidos = array();
+        foreach($pedidos as $pedido){
+            $itens = $pedido->itens;
+            array_push($totaisItens, count($itens));
+            $total = 0;
+            foreach($itens as $item){
+                $total += $item->preco * $item->quantidades;
+            }
+            array_push($totaisPedidos, $total);
+
+        }       
+        return view("pedido.pedidos", ['pedidos' => $pedidos, 'totaisItens' => $totaisItens, 'totaisPedidos' => $totaisPedidos]);  
     }
+
+    public function itensPedido($pedido_id){
+        $pedido = \projetoGCA\Pedido::find($pedido_id);    
+        return view("pedido.itensPedido", ['itensPedido' => $pedido->itens]);  
+    }
+
 }

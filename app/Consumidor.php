@@ -20,4 +20,8 @@ class Consumidor extends Model
     public function pedidos(){
         return $this->hasMany(Pedido::class, "consumidor_id", "id");
     }
+
+    public function nome(){
+        return $this->usuario->name;
+    }
 }

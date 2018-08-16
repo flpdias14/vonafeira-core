@@ -64,4 +64,12 @@ class UnidadeVendaController extends Controller
         $unidadeVenda = \projetoGCA\UnidadeVenda::where ('nome', '=', $nome)->first();
         return empty($unidadeVenda);
     }
+
+    public function remover($id) {
+        $unidadeVenda = \projetoGCA\UnidadeVenda::find($id); 
+        $unidadeVenda->delete();  
+        return redirect()
+                ->action('UnidadeVendaController@listar')
+                ->withInput();
+    }
 }

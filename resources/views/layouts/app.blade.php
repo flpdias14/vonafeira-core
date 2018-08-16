@@ -83,6 +83,9 @@
                                     <li>
                                         <a href="/gruposConsumo">Meus Grupos de Consumo</a>
                                     </li>
+                                    <li>
+                                        <a href="/unidadesVenda">Unidades de Venda</a>
+                                    </li>
                                 </ul>
                             </li>
 
