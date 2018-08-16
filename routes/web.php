@@ -85,3 +85,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function(){
     return redirect()->action('HomeController@index');
 });
+
+// Rotas para relatorios
+Route::get('/evento/pedidos/relatorioProdutor/{evento_id}', 'PdfController@criarRelatorioPedidosProdutores');
+Route::get('/evento/pedidos/relatorioComposicao/{evento_id}', 'PdfController@criarRelatorioComposicaoPedidos');
+

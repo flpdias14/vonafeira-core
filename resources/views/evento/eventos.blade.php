@@ -43,7 +43,7 @@
                             <td>{{ $evento->hora_evento }}</td>
                             <td>{{ $evento->data_inicio_pedidos }}</td>
                             <td>{{ $evento->data_fim_pedidos }}</td>
-                            <td><a class="btn btn-info" href="{{action('EventoController@pedidos', $evento->id)}}">Visualizar</a></td>
+                            <td><a class="btn btn-info" href="{{action('PdfController@criarRelatorioComposicaoPedidos', $evento->id)}}">Visualizar</a></td>
                         </tr>
                         @endforeach
                         </tbody>
