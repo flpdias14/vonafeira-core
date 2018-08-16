@@ -51,6 +51,7 @@
                     @endif
                 </div>
                 <div class="panel-footer">
+                    <a class="btn btn-danger" href="{{URL::previous()}}">Voltar</a>
                     <a class="btn btn-success" href="{{action('EventoController@novo', $grupoConsumo)}}">Novo</a>
                 </div>
             </div>

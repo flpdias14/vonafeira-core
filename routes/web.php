@@ -33,6 +33,7 @@ Route::post('/salvarUsuario', 'UserController@salvar');
 Route::get('/unidadesVenda', "UnidadeVendaController@listar");
 Route::get('/adicionarUnidadeVenda', "UnidadeVendaController@adicionar");
 Route::get('/editarUnidadeVenda/{id}', "UnidadeVendaController@editar");
+Route::get('/removerUnidadeVenda/{id}', "UnidadeVendaController@remover");
 Route::post('/cadastrarUnidadeVenda', "UnidadeVendaController@cadastrar");
 Route::post('/atualizarUnidadeVenda', "UnidadeVendaController@atualizar");
 
@@ -72,6 +73,7 @@ Route::get('/adicionarEvento/{idGrupoConsumo}',  'EventoController@novo');
 Route::post('/salvarEvento',  'EventoController@salvar');
 Route::get('/eventos/{idGrupoConsumo}', 'EventoController@listar');
 Route::get('/evento/pedidos/{evento_id}', 'EventoController@pedidos');
+Route::get('/evento/pedidos/itens/{pedido_id}', 'EventoController@itensPedido');
 Auth::routes();
 
 // Rotas para Loja

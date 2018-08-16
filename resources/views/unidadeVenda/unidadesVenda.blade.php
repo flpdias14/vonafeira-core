@@ -26,12 +26,16 @@
                         <td>{{ $unidadesVenda->descricao }}</td>
                         <td>{{ ($unidadesVenda->is_fracionado ? "Sim": "Não") }}</td>
                         <td>{{ ($unidadesVenda->is_porcao ? "Sim": "Não") }}</td> 
-                        <td><a href="/editarUnidadeVenda/{{$unidadesVenda->id}}">Editar</a></td>
-                        <td><a disabled href="">Remover</a></td>  
+                        <td><a class="btn btn-success"href="{{ action('UnidadeVendaController@editar', $unidadesVenda->id) }}">Editar</a></td>
+                        <td><a class="btn btn-danger"href="{{ action('UnidadeVendaController@remover',$unidadesVenda->id) }}">Remover</a></td>
                     </tr>
 
                     @endforeach
                 </table>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-danger" href="{{URL::previous()}}">Voltar</a>
+                    <a class="btn btn-success" href="{{action('UnidadeVendaController@adicionar')}}">Novo</a>
                 </div>
             </div>
         </div>
