@@ -43,7 +43,7 @@
                             <td>{{ $evento->hora_evento.' hrs' }}</td>
                             <td>{{ \projetoGCA\Http\Controllers\UtilsController::dataFormato($evento->data_inicio_pedidos, 'd/m/Y') }}</td>
                             <td>{{ \projetoGCA\Http\Controllers\UtilsController::dataFormato($evento->data_fim_pedidos, 'd/m/Y') }}</td>
-                            <td><a class="btn btn-info" href="{{action('PdfController@criarRelatorioComposicaoPedidos', $evento->id)}}">Visualizar</a></td>
+                            <td><a class="btn btn-info" href="{{action('EventoController@pedidos', $evento->id)}}">Visualizar</a></td>
                         </tr>
                         @endforeach
                         </tbody>
