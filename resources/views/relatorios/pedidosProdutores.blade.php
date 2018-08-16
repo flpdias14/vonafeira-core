@@ -25,7 +25,7 @@
         <tr>
             <th>{{$data[$i]->nome_produtor}}</th>
             <th>{{$data[$i]->nome_produto}}</th>
-            <th>{{$data[$i]->preco}}</th>
+            <th>{{'R$'.number_format($data[$i]->preco, 2)}}</th>
             @if($data[$i]->is_porcao)
                 <th>Sim</th>
             @else
