@@ -35,7 +35,7 @@
                             <td>{{ $produto->nome_produtor }}</td>
                             <td>{{ $produto->nome }}</td>
                             <td>{{ $produto->descricao }}</td>
-                            <td>{{ $produto->preco }}</td>
+                            <td>{{ 'R$'.number_format($produto->preco, 2 )}}</td>
                             <td>{{ $produto->unidadeVenda->nome }}</td>  
                             <td><a class="btn btn-success"href="{{ action('ProdutoController@editar', $produto->id) }}">Editar</a></td>
                             <td><a class="btn btn-danger"href="{{ action('ProdutoController@remover',$produto->id) }}">Remover</a></td>
